@@ -89,7 +89,6 @@ the standard tools in PRs (for example commenting that a PR "Closes
 
 [Automation](https://help.github.com/articles/configuring-automation-for-project-boards/)
 
-
 ## <a id="project"></a>Projects ##
 
 Projects can be internal to a GitHub repository, or a GitHub organisation. They
@@ -112,4 +111,5 @@ development complete for review and possible further tweaks by other developers.
 ## <a id="issue"></a>Issues ##
 
 An issue is a breakdown of work from a [milestone](#milestone). The general rule
-of thumb for these is as granular as possible, but 
+of thumb for these is as granular as possible, but ideally less than a couple of
+days work. The more granular the issue, the more precise the estimate can be.
