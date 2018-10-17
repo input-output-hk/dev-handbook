@@ -26,8 +26,8 @@ and other IOHK projects.
   compromising correctness or performance. The reason for and behavior of each
   individual component, from functions up should be relatively easy to explain
   without reference to the code. This means it is often desirable to split large
-  functions into smaller easier to understand components. This allows these
-  smaller components to be tested in isolation if that is approriate.
+  functions into smaller easier to understand components. This also allows these
+  smaller components to be tested in isolation if that is appropriate.
 
 * **Code for the Future**: Code should not be written for the computer or the
   compiler but for the person who has to read/understand/debug/modify it later.
@@ -39,6 +39,14 @@ and other IOHK projects.
   These optional and/or error prone processes should be replaced with tools
   that are part of the normal development process and check that all required
   process steps have been completed.
+
+* **Openness**: None of our existing techniques, tools or practices should be
+  immutably locked in stone. When better techniques, tools or practices become
+  available, they should be considered. However, this should be balanced with
+  avoiding chasing the latest development fad. In line with this we should
+  have a good reason for using all of our existing techniques, tools and
+  practices. Finally, everybody on the team should be free to suggest
+  improvements or question the status quo.
 
 * **Be awesome to each other**: Everybody working on Cardano SL and at IOHK
   are on the same team. Aim to treat everyone with the kindness and respect.
