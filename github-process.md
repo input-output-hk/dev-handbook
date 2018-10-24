@@ -1,12 +1,12 @@
 # Development github process #
 
 
-We have a pretty large development team spread across several teams. These teams
-have somewhat different focuses, from formal methods engineers developing proofs
-and executable specs, to more implementation focused teams. We also use several
-different programming languages now. All of these separate streams of work need
-to integrate with the larger mission of IOHK and the management processes
-that keep track of large, interconnected projects.
+We have a pretty large development organisation spread across several teams.
+These teams have somewhat different focuses, from formal methods engineers
+developing proofs and executable specs, to more implementation focused teams. We
+also use several different programming languages now. All of these separate
+streams of work need to integrate with the larger mission of IOHK and the
+management processes that keep track of large, interconnected projects.
 
 ## Motivation ##
 
