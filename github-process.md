@@ -89,6 +89,11 @@ the standard tools in PRs (for example commenting that a PR "Closes
 
 [Automation](https://help.github.com/articles/configuring-automation-for-project-boards/)
 
+## GitHub ##
+
+Moving parts. This is an overview of the different moving parts of GitHub and
+how they should be used.
+
 ## <a id="project"></a>Projects ##
 
 Projects can be internal to a GitHub repository, or a GitHub organisation. They
