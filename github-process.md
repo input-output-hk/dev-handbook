@@ -94,34 +94,35 @@ the standard tools in PRs (for example commenting that a PR "Closes
 Moving parts. This is an overview of the different moving parts of GitHub and
 how they should be used.
 
-## <a id="project"></a>Projects ##
+### <a id="project"></a>Projects ##
 
 Projects can be internal to a GitHub repository, or a GitHub organisation. They
 have a kanban like board where all the issues and pull requests that are tagged
 to that project appear. As issues are closed and PRs merged the cards on the
 board are moved to done, but moving them to in progress is a manual process.
 
-## <a id="milestone"></a>Milestones ##
+### <a id="milestone"></a>Milestones ##
 
 A github milestone is a unit of delivery. A grouping of individual [prs](#pr) or
 [issues](#issue) that are the break down of a deliverable chunk of work. A
 milestone is internal to a GitHub repository.
 
-## <a id="pull request"></a>Pull Requests ##
+### <a id="pull request"></a>Pull Requests ##
 
 Pull requests are an intention to merge code into the main line of development
 (or another branch). PRs are opened when a feature or other chunk of work is
 development complete for review and possible further tweaks by other developers.
 
-## <a id="issue"></a>Issues ##
+### <a id="issue"></a>Issues ##
 
 An issue is a breakdown of work from a [milestone](#milestone). The general rule
 of thumb for these is as granular as possible, but ideally less than a couple of
 days work. The more granular the issue, the more precise the estimate can be.
 
-## <a id="issue"></a>Epics ##
+### <a id="epic"></a>Epics ##
 
 An epic is a larger piece of work. We use epics to track items that are too big
 for a single issue. Often work in an epic will need to be delivered across
 multiple [milestones](#milestone). Epics also allow dependencies to be tracked
 across larger units of work and across different teams.
+
