@@ -118,3 +118,10 @@ development complete for review and possible further tweaks by other developers.
 An issue is a breakdown of work from a [milestone](#milestone). The general rule
 of thumb for these is as granular as possible, but ideally less than a couple of
 days work. The more granular the issue, the more precise the estimate can be.
+
+## <a id="issue"></a>Epics ##
+
+An epic is a larger piece of work. We use epics to track items that are too big
+for a single issue. Often work in an epic will need to be delivered across
+multiple [milestones](#milestone). Epics also allow dependencies to be tracked
+across larger units of work and across different teams.
