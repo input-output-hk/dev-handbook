@@ -1,4 +1,7 @@
-# Principles
+---
+title: "Principles"
+date: 2019-02-01T13:50:34Z
+---
 
 The following high level principles should guide development of Cardano SL
 and other IOHK projects.
@@ -65,18 +68,6 @@ team should be free to suggest improvements or question the status quo.
 Everybody working on Cardano SL and at IOHK are on the same team. Aim to treat
 everyone with the kindness and respect. Be kind when giving feedback, don't take
 it personally when receiving it.
-
-## Ownership
-
-We as developers should be proud of the work we do: from the smallest artifacts
-to the more complex products. This means taking responsibility for maintaining
-the quality of our work. For instance, when a discussion on slack makes
-reference to something that would require changes in our code base to ensure
-its correctness, this should be added as a github issue, so that action can be
-taken and important information is not lost in the slack noise.
-
-If we feel like we lack a sense of ownership, this should be discussed with
-other peers, to see whether it is possible to change this situation.
 
 ## Work/life balance
 

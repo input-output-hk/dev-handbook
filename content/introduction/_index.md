@@ -6,8 +6,4 @@ chapter = true
 pre = "<i class='far fa-compass'></i>"
 +++
 
-### Introduction
-
-# Some Chapter title
-
-Lorem Ipsum.
+# Introduction

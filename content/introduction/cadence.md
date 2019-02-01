@@ -1,4 +1,7 @@
-# Cadence
+---
+title: "Cadence"
+date: 2019-02-01T13:50:34Z
+---
 
 All processes in nature have a cadence or rhythm. A development team is no
 different. What follows in this document is a suggested cadence for a
@@ -38,13 +41,13 @@ Inter team:
    complete?
  * Are we learning lessons and improving our practices?
  * Do we understand how what we are doing fits into the bigger picture
- 
+
 Intra team:
 
  * Do we know how what the work of teams is related (dependencies etc)
  * Does each team have a high level view of what the other teams are working on
  * Are we sharing lessons learned across teams
- 
+
 PM/management:
 
  * Do we have an understanding of the work in progress
@@ -91,7 +94,7 @@ craft better. During the retrospective we should assess the issue considering:
    * Did we thoroughly assess the dependencies and possible risks beforehand?
  * How accurate was the estimate?
  * Is the issue complete or still underway?
- 
+
 When an issue is completed the `Consequences` section of the issue should be
 filled in.
 
@@ -120,6 +123,6 @@ The aims of the weekly team lead's meeting are:
  * To ensure that the teams have a clear picture of what each other are doing
  * Sharing lessons learned
  * Reporting progress or blockers to PM and management
- 
+
 The intention here is essentially the same as the team retrospective, just "one
 level up".

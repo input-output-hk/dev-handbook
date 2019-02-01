@@ -1,3 +1,9 @@
+---
+title: "Concepts"
+date: 2019-02-01T13:50:34Z
+---
+
+
 # Development github process #
 
 
@@ -43,8 +49,8 @@ are:
  * What dependencies pieces of work have from other teams (and vice versa).
  * As accurate as possible view of when the pieces of work in flight can be
    expected to be delivered.
-   
-   
+
+
 ### Lightweight ###
 
 The process should be easy to understand and implement and should impose the
@@ -125,4 +131,3 @@ An epic is a larger piece of work. We use epics to track items that are too big
 for a single issue. Often work in an epic will need to be delivered across
 multiple [milestones](#milestone). Epics also allow dependencies to be tracked
 across larger units of work and across different teams.
-

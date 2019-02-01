@@ -1,4 +1,7 @@
-# Considerations for setting up repos #
+---
+title: "Repository set up"
+date: 2019-02-01T13:50:34Z
+---
 
 We want to set up our open source reops is a way that's consistent and that
 encourages participation from the community
