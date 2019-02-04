@@ -5,7 +5,7 @@ disableToc: true
 
 ## Contributors
 
-Thanks to them <i class="fas fa-heart"></i> for making Open Source Software a better place !
+Thanks to everyone who has contributed to this handbook <i class="fas fa-heart"></i>
 
 {{% ghcontributors "https://api.github.com/repos/input-output-hk/dev-handbook/contributors?per_page=100" %}}
 
