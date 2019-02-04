@@ -34,4 +34,6 @@ and coding standards for the main languages of the project.
 # Issue templates #
 
 These should be set up and be as similar as possible as other projects within
-IOHK that use the same programming environment.
+IOHK that use the same programming environment. A growing repository of examples
+can be found in the [<i class="fas fa-code"></i>
+ Templates](/templates) section.
