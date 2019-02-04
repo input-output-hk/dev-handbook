@@ -20,7 +20,7 @@ home = [ "HTML", "RSS", "JSON"]
 
 [Languages]
 [Languages.en]
-title = "Documentation for Hugo Learn Theme"
+title = "IOHK Development handbook"
 weight = 1
 languageName = "English"
 
