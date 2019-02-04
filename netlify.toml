@@ -6,7 +6,7 @@
   HUGO_VERSION = "0.50"
 
 [context.production.environment]
-  HUGO_BASEURL = "https://dev-handbook.netlify.com/"
+  HUGO_BASEURL = "https://festive-hoover-f1dec6.netlify.com/"
 
 [context.deploy-preview]
   command = "hugo -b $DEPLOY_PRIME_URL"
