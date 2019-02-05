@@ -1127,9 +1127,15 @@ pre .copy-to-clipboard:hover {
     text-align: left;
 }
 
+#sidebar i.fab, #sidebar i.fas, #sidebar i.far {
+    width: 30px;
+    text-align: left;
+}
+
 i.devicons {
     font-size: 1.6em;
     position: relative;
-    top: 0.2em;
+    width: 20px;
     right: 0.1em;
+    top: 0.2em;
 }
