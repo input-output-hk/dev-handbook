@@ -3,7 +3,9 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "IOHK Development handbook"
 theme = "hugo-theme-learn"
-defaultContentLanguageInSubdir= true
+defaultContentLanguageInSubdir = true
+pygmentsCodeFences = true
+pygmentsUseClasses=true
 
 [params]
   editURL = "https://github.com/input-output-hk/dev-handbook/tree/master/content/"
