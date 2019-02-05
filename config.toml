@@ -6,7 +6,7 @@ theme = "hugo-theme-learn"
 defaultContentLanguageInSubdir= true
 
 [params]
-  editURL = "https://github.com/input-output-hk/dev-handbook/content/"
+  editURL = "https://github.com/input-output-hk/dev-handbook/tree/master/content/"
   description = "Documentation for the IOHK development process"
   showVisitedLinks = true
   disableBreadcrumb = false
