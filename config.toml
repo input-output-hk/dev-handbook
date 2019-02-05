@@ -8,6 +8,7 @@ defaultContentLanguageInSubdir= true
 [params]
   editURL = "https://github.com/input-output-hk/dev-handbook/tree/master/content/"
   description = "Documentation for the IOHK development process"
+  themeVariant = "iohk"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
