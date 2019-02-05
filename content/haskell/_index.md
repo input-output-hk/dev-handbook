@@ -3,7 +3,7 @@ title = "Haskell"
 date = 2019-02-04T10:50:42Z
 weight = 5
 chapter = true
-pre = "<b>X. </b>"
+pre = "<i class='devicons devicons-haskell'></i>"
 +++
 
 

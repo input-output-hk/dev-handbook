@@ -1126,3 +1126,10 @@ pre .copy-to-clipboard:hover {
 #searchResults {
     text-align: left;
 }
+
+i.devicons {
+    font-size: 1.6em;
+    position: relative;
+    top: 0.2em;
+    right: 0.1em;
+}
