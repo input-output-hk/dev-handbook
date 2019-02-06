@@ -11,7 +11,8 @@ pygmentsUseClasses=true
   editURL = "https://github.com/input-output-hk/dev-handbook/tree/master/content/"
   description = "Documentation for the IOHK development process"
   themeVariant = "iohk"
-  showVisitedLinks = true
+  showVisitedLinks = false
+  disableInlineCopyToClipBoard = true
   disableBreadcrumb = false
   disableNextPrev = false
 # Change the default theme to be use when building the site with Hugo
