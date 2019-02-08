@@ -8,6 +8,7 @@ pygmentsCodeFences = true
 pygmentsUseClasses=true
 
 [params]
+  githubURL = "https://github.com/input-output-hk/dev-handbook"
   editURL = "https://github.com/input-output-hk/dev-handbook/tree/master/content/"
   description = "Documentation for the Cardano development process"
   themeVariant = "iohk"
