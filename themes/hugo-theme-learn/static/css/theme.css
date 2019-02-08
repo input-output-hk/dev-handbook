@@ -630,6 +630,7 @@ code {
     /* color: #5e5e5e; */
     /* background: #FFF7DD; */
     /* border: 1px solid #fbf0cb; */
+    vertical-align: baseline;
     padding: 0.2em 0.4em;
 }
 code + .copy-to-clipboard {

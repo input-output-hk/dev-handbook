@@ -1,11 +1,11 @@
 ---
-title: "IOHK Development process"
+title: "Cardano Development process"
 ---
 
-# IOHK Development process
+# Cardano Development process
 
-Welcome to the IOHK development process documentation, a community curated guide
-to how we develop software at IOHK. Here you will find instructions and
+Welcome to the Cardano development process documentation, a community curated guide
+to how we develop software at Cardano. Here you will find instructions and
 guidelines on our development process.
 
 ## Contribute to this documentation

@@ -1,6 +1,6 @@
-# IOHK DEVELOPMENT HANDBOOK #
+# Cardano DEVELOPMENT HANDBOOK #
 
-Welcome to the IOHK dev handbook. This is where we will document the processes
+Welcome to the Cardano dev handbook. This is where we will document the processes
 we follow in software development teams. We will cover how we manage the
 development itself as well as standards for continuous integration and how we
 manage dependencies.
