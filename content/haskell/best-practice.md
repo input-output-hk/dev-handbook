@@ -3,18 +3,18 @@ title = "Best Practice"
 date = 2019-02-04T10:50:42Z
 weight = 1
 +++
-## Error throwing / exceptions
+## Use `error` to avoid partial functions
 
  * Try very hard to avoid partial functions
  * If you know a function is safe, but somehow weren't able to "prove" it to GHC, use your error string to state why you think the error is impossible. e.g.
 
- {{< highlight haskell >}}
+ ```haskell
  halfOfEvens :: Rational -> [Rational] -> [Rational]
  halfOfEvens n = map (\d -> n `divEx` d) . filter (/= 0)
    where
-     x `divEx` 0 = error "This should be impossible: We already filtered the list to remove zeroes"
+     x `divEx` 0 = error "Module.Name.halfOfEvens: This should be impossible: We already filtered the list to remove zeroes"
      x `divEx` d = x / d
- {{< /highlight >}}
+ ```
 
 ### Avoid `MonadFail`
 
@@ -22,7 +22,7 @@ Don't write functions constrained by `MonadFail`.
 
 **Bad**:
 
-{{< highlight haskell >}}
+```haskell
 data Email = Email
 
 parseEmail :: MonadFail m => Text -> m Email
@@ -32,29 +32,33 @@ parseEmail txt
 
 instance FromJSON Email where
   parseJSON = withText "Email" parseEmail
-{{< /highlight >}}
+```
 
-**Good**: use `Either String` concretely
+**Good**: use `Either e` where `e` is a sum type designed to represent errors.
 
-{{< highlight haskell >}}
+```haskell
 data Email = Email
+
+data EmailError
+  = EmailBadAddress Text
+  | EmailOtherError
 
 parseEmail :: Text -> Either String Email
 parseEmail txt
   | isEmail txt = Right $ Email txt
-  | otherwise = Left "that isn't an email!"
+  | otherwise = Left $ EmailBadAddress txt
 
 instance FromJSON Email where
   parseJSON = withText "Email" $ either fail pure . parseEmail
-{{< /highlight >}}
+```
 
 You can recover other side-effects easily:
 
-{{< highlight haskell >}}
+```haskell
 hush . parseEmail :: Text -> Maybe Email
 
 either throwString pure . parseEmail :: Text -> IO Email
-{{< /highlight >}}
+```
 
 **Justification**:
 
@@ -83,27 +87,27 @@ AND
 
 Bad example:
 
-{{< highlight haskell >}}
+```haskell
 data ShowBox = forall s. Show s => SB s
 heteroList :: [ShowBox]
 heteroList = [SB (), SB 5, SB True]
-{{< /highlight >}}
+```
 
 Instead you can just show:
 
-{{< highlight haskell >}}
+```haskell
 heteroList :: [String]
 heteroList = [show (), show 5, show True]
-{{< /highlight >}}
+```
 
 Okay example:
 
-{{< highlight haskell >}}
+```haskell
 data ShowEnum = forall s. (Show s, Enum s) => SE s
 
 showNexts = map (show . succ)
 showPrevs = map (show . pred)
-{{< /highlight >}}
+```
 
 ## Lens
 
@@ -123,7 +127,7 @@ https://github.com/commercialhaskell/stack/wiki/Script-interpreter
 
 Sometimes you have two types which are very similar, both in their representations and in how they're used. For example,
 
-{{< highlight haskell >}}
+```haskell
 data Foo
   = Foo
   { a :: Int
@@ -138,11 +142,11 @@ data Foo
    , c :: Int
    , d :: Int
    }
-{{< /highlight >}}
+```
 
 It would be a pain to duplicate functions which operate on these types. A first attempt to avoid that might be:
 
-{{< highlight haskell >}}
+```haskell
 data FooBar
   = FooBar
    { a :: Int
@@ -150,13 +154,13 @@ data FooBar
    , c :: Int
    , d :: Maybe Int
    }
-{{< /highlight >}}
+```
 
 but we lose value type safety/documentation here.
 
 A better approach is to parameterize the field which varies:
 
-{{< highlight haskell >}}
+```haskell
 type Never = Proxy
 type Always = Identity
 
@@ -170,12 +174,11 @@ data FooBar f
 
  type Foo = FooBar Never
  type Bar = FooBar Always
-{{< /highlight >}}
+```
 
 This lets us share the commonalities and still differentiate in a safe way. But it's a little annoying that `Foo`'s `d` is wrapped in an `Identity` constructor at the value level. We can fix this final infelicity with type families:
 
-{{< highlight haskell >}}
-
+```haskell
 data FooBarType = Foo | Bar
 
 type family OnlyIfBar (x :: FooBarType) (a :: *) :: * where
@@ -189,7 +192,7 @@ data FooBar (x :: FooBarType)
    , c :: Int
    , d :: OnlyIfBar x Int
    }
-{{< /highlight >}}
+```
 With this approach `d :: FooBar Foo -> ()` (total absence of `d` would be the best option, but without extensible records, `()` is the best we can do) and `d :: FooBar Bar -> Int`.
 
 ## `newtype`s
@@ -201,30 +204,32 @@ Newtypes in Haskell are used for 3 primary purposes:
 
 At FR, we seldom do 1. Instead we prefer to use `Tagged` and `TypeLits`:
 
-{{< highlight haskell >}}
+```haskell
 sf :: Tagged "City" String
 sf = "San Francisco"
-{{< /highlight >}}
+```
 
 instead of
 
-{{< highlight haskell >}}
+```haskell
 newtype City = City { unCity :: String }
 sf :: City
 sf = City "San Francisco"
-{{< /highlight >}}
+```
 
 2 looks like:
-{{< highlight haskell >}}
+
+```haskell
 module Natural (Natural(), mkNatural) where
 
 newtype Natural = Natural { unNatural :: Int }
 mkNatural :: Int -> Maybe Natural
 mkNatural n = if n >= 0 then Just (Natural n) else Nothing
-{{< /highlight >}}
+```
 
 3 looks like:
-{{< highlight haskell >}}
+
+```haskell
 newtype Add = Add { unAdd :: Int }
 instance Monoid Add where
   mempty = 0
@@ -233,20 +238,21 @@ newtype Mult = Mult { unMult :: Int }
 instance Monoid Mult where
   mempty = 1
   mappend = (*)
-{{< /highlight >}}
+```
 
 ## Phantom types
 
 The `Tagged` example above makes use of a phantom type variable. The definition of `Tagged` is:
-{{< highlight haskell >}}
+
+```haskell
 newtype Tagged t a = Tagged { untag :: a }
-{{< /highlight >}}
+```
 
 Note how the type variable `t` does not appear on the right-hand-side of the equals-sign. It's only used to add type-level information to a type - it's never used at the value level. We call this kind of type variable a phantom type variable, or occasionally, just a phantom type.
 
 A more useful example is hashing passwords. We might want to represent passwords as either raw text or hashed text and have operations that only work on one kind:
 
-{{< highlight haskell >}}
+```haskell
 module Password (Password, PasswordState, rawPassword, hashPassword, comparePassword) where
 
 data PasswordState = Raw | Hashed
@@ -265,14 +271,15 @@ hashPassword (Password r) = Password (secureHash r)
 
 comparePassword :: Password 'Raw -> Password 'Hashed -> Bool
 comparePassword (Password r) (Password h) = secureHash r == h
-{{< /highlight >}}
+```
 
 We're using a promoted datatype (`PasswordState`) to encode whether a `Password` is plaintext or hashed. Note that we do not expose the constructor for `Password`, and instead expose a smart constructor `rawPassword` and a hashing function `hashPassword`. If we expose the constructor, a malicious (or forgetful) user could construct a value of `Password 'Hashed` that contains a plaintext password.
 
 ## GADTs
 
 Closely related to phantom types are Generalized Algebraic Data Types or GADTs. Suppose we had the following representation of a small programming language with integers, bools, addition, and conditions:
-{{< highlight haskell >}}
+
+```haskell
 data Expr
   | I Int
   | B Bool
@@ -280,11 +287,11 @@ data Expr
   | LessThan Expr Expr
   | Cond Expr Expr Expr
     deriving (Eq, Show)
-{{< /highlight >}}
+```
 
 We can construct values like `Add (I 1) (I 3)` to represent `1 + 3`, but there's nothing preventing us from constructing values like `Add (I 1) (B True)`. Furthermore, we can only detect this kind of problem at runtime. Writing an evaluation function for this data type is frustrating:
 
-{{< highlight haskell >}}
+```haskell
 data Value
   = VI Int
   | VB Bool
@@ -305,12 +312,13 @@ eval (Cond c t f) = do
   if c'
     then eval t
     else eval f
-{{< /highlight >}}
+```
 
 We're relying on the `Monad` instance for `Maybe` to call `fail` on pattern match failures when we pass something like `Add (I 1) (B True)` at runtime. We also have to make an extra datatype to represent values.
 
 You can try to do something smarter with phantom types, existential quantification, and smart constructors:
-{{< highlight haskell >}}
+
+```haskell
 data Expr a
   = I Int
   | B Bool
@@ -341,22 +349,24 @@ eval (LessThan x y) = eval x < eval y
 eval (Cond c t f)
   | eval c = eval t
   | otherwise = eval f
-{{< /highlight >}}
+```
 
 Unfortunately this doesn't compile. You'll get errors like:
-{{< highlight plaintext >}}
+
+```text
 Couldn't match expected type ‘a’ with actual type ‘Bool’
   ‘a’ is a rigid type variable bound by
       the type signature for eval :: Expr a -> a at x.hs:57:9
 Relevant bindings include eval :: Expr a -> a (bound at x.hs:58:1)
 In the expression: b
 In an equation for ‘eval’: eval (B b) = b
-{{< /highlight >}}
+```
 
 Everything up to the `eval` function works, but then we don't have any evidence when matching `B b` that `Expr a` should be `Expr Bool`. We're not carrying that information around!
 
 This is what GADTs are for - they let you carry around extra type evidence in your constructors:
-{{< highlight haskell >}}
+
+```haskell
 data Expr a where
   I :: Int -> Expr Int
   B :: Bool -> Expr Bool
@@ -375,21 +385,23 @@ eval (LessThan x y) = eval x < eval y
 eval (Cond c t f)
   | eval c = eval t
   | otherwise = eval f
-{{< /highlight >}}
+```
 
 When we pattern match on `B` here, we gain access to evidence that `Expr a` is `Expr Bool`, and so on for the other constructors. Furthermore, GHC won't even let us construct a value like `Add (I 1) (B True)`:
-{{< highlight haskell >}}
+
+```haskell
 Couldn't match type ‘Bool’ with ‘Int’
  Expected type: Expr Int
    Actual type: Expr Bool
 In the second argument of ‘Add’, namely ‘(B True)’
 In the expression: Add (I 1) (B True)
-{{< /highlight >}}
+```
 
 If you're curious how this works, you can dump the Core (`-ddump-simpl`, see Appendix) to see that each constructor is literally carrying around an extra parameter as evidence that allows GHC to insert safe type casts from `a` to `Int` or `Bool` (or whatever) inside a pattern match.
 
 Note that the constructor's argument type doesn't have to match the type argument of the data type (see `LessThan` and `Cond` above). The following is perfectly legal (though of dubious utility):
-{{< highlight haskell >}}
+
+```haskell
 data Thing a where
   ThingA :: Int -> Thing Bool
   ThingB :: Bool -> Thing Int
@@ -397,28 +409,28 @@ data Thing a where
 f :: Thing a -> a
 f (ThingA a) = a == 0
 f (ThingB b) = if b then 1 else 2
-{{< /highlight >}}
+```
 
 ## Avoid `OverloadedLists` and `MonoTraversable`
 
 `OverloadedLists` depend on a typeclass `IsList`:
 
-{{< highlight haskell >}}
+```haskell
 class IsList l where
   type Item l
   fromList  :: [Item l] -> l
   toList    :: l -> [Item l]
-{{< /highlight >}}
+```
 
 The `mono-traversable` package defines a series of typeclasses:
 
-{{< highlight haskell >}}
+```haskell
 type family Element mono
 
 class MonoFoldable mono where
   ofoldMap :: Monoid m => (Element mono -> m) -> mono -> m
 ...
-{{< /highlight >}}
+```
 
 Each of these typeclasses rely on type families:
 
