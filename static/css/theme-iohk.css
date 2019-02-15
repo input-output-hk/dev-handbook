@@ -30,7 +30,7 @@
 body {
     color: var(--MAIN-TEXT-color) !important;
     background-color: var(--MAIN-BG-color);
-    font-family: "Roboto", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: "Monserrat", "Roboto", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
 }
 
 textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, select[multiple=multiple]:focus {
@@ -40,7 +40,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 
 h1, h2, h3, h4, h5 {
     color: var(--MAIN-TEXT-color) !important;
-    font-family: 'Electrolize', sans-serif;
+    font-family: "Monserrat", 'Electrolize', sans-serif;
 }
 
 a {
