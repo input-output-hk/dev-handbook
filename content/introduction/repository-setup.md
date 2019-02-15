@@ -28,7 +28,7 @@ Library code should contain examples of use
 # License #
 
 The standard licence used across the `input-output-hk` GitHub organisation is
-the apache 2.0 license. See [Licensing](./licence/) for more detail
+the apache 2.0 license. See [Licensing](../licence/) for more detail
 
 # Contributing #
 
