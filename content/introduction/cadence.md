@@ -1,6 +1,7 @@
 ---
 title: "Cadence"
 date: 2019-02-01T13:50:34Z
+weight: 20
 ---
 
 All processes in nature have a cadence or rhythm. A development team is no

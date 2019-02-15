@@ -1,6 +1,7 @@
 ---
 title: "Principles"
 date: 2019-02-01T13:50:34Z
+weight: 1
 ---
 
 The following high level principles should guide development of Cardano SL
